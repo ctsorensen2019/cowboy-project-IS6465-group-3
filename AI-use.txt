@@ -4,3 +4,13 @@ AI Usage:
 Prompt: For now, don't fix the pages. Just convert them as is to php pages that fit this file/folder organization in the screenshot. This is the for the midterm submission, not the final submission. We want the admin view of the pages, we can fix permissions later. Remember, those were screenshots of the wireframes I gave you, not the actual pages. I included the screenshots of the wireframes.
 How modified/rejected/reviewed: Every page had to be reviewed and updated. Everything was hardcoded, and so some pages needed to be fixed to do a for loop for table generation, etc. The main benefit of the output was the CSS. As I requested, it did not create any resident pages so I had to update that. It also did not have the "includes" folder when I had prompted it.
 Reason for AI usage: To save time on design.
+
+2. Model used: GitHub Copilot
+Prompt: Fix my edit-maintenance and edit-unit pages, They are not populating the fields properly
+How modified/rejected/reviewed: Tested the code and it worked, it was able to fix the issue I was having a hard time fixing.
+Reason for AI usage: Spent too long troubleshooting an issue, it helped to make it better.
+
+3. Model used: GitHub Copilot
+Prompt: Fix unit-details and request details to fit this attached request-details format, but make it fit the data already in here. Add some css in for it that matches the rest of page css
+How modified/rejected/reviewed: Reviewed the updates, it was missing a few fields that I needed to add. 
+Reason for AI usage: To save time on design and fix the updates to the page I had made. The table was generating, but not properly and the CSS was bad.
