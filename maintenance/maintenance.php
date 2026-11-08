@@ -2,6 +2,55 @@
 $pageTitle = 'Maintenance Requests';
 $activePage = 'maintenance';
 require_once __DIR__ . '/../includes/header.php';
+
+$requests = [
+    [
+        'request_id' => 'REQ-001',
+        'unit' => '101',
+        'issue' => 'Leaking Faucet',
+        'status' => 'Pending',
+        'description' => 'The kitchen faucet is leaking and needs to be repaired.',
+        'submitdate' => '10/18/2026',
+        'assigned_to' => ''
+    ],
+    [
+        'request_id' => 'REQ-002',
+        'unit' => '204',
+        'issue' => 'AC not cooling',
+        'status' => 'In progress',
+        'description' => 'The air conditioning unit is not cooling effectively.',
+        'submitdate' => '10/24/2026',
+        'assigned_to' => ''
+    ],
+    [
+        'request_id' => 'REQ-003',
+        'unit' => '305',
+        'issue' => 'Broken Window',
+        'status' => 'Completed',
+        'description' => 'The window in the living room is broken and needs to be replaced.',
+        'submitdate' => '10/27/2026',
+        'assigned_to' => ''
+    ],
+    [
+        'request_id' => 'REQ-004',
+        'unit' => '406',
+        'issue' => 'Dishwasher not draining',
+        'status' => 'In progress',
+        'description' => 'The dishwasher is not draining properly and needs to be serviced.',
+        'submitdate' => '10/27/2026',
+        'assigned_to' => ''
+    ],
+    [
+        'request_id' => 'REQ-005',
+        'unit' => '507',
+        'issue' => 'Electrical Outlet not working',
+        'status' => 'Completed',
+        'description' => 'The electrical outlet in the living room is not working and needs to be repaired.',
+        'submitdate' => '10/27/2026',
+        'assigned_to' => ''
+    ]
+];
+
 ?>
   <div class="app">
 <?php require_once __DIR__ . '/../includes/nav.php'; ?>
@@ -22,50 +71,37 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
 
       <table class="grid-table">
-        <thead><tr><th>Request ID</th><th>Unit</th><th>Issue</th><th>Date Submitted</th><th>Status</th><th>Actions</th></tr></thead>
+        <h1>Maintenance requests</h1>
+        <thead>
+            <tr>
+                <th>Request</th>
+                <th>Unit</th>
+                <th>Issue</th>
+                <th>Status</th>
+                <th>Date Submitted</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
         <tbody>
-          <tr>
-            <td>REQ-001</td><td>101</td><td>Leaking Faucet</td><td>10/18/2026</td>
-            <td class="status-pending">Pending</td>
-            <td class="actions">
-              <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=REQ-001" title="Edit"><i class="fa-solid fa-pen"></i></a>
-              <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=REQ-001" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>REQ-002</td><td>204</td><td>AC not cooling</td><td>10/27/2026</td>
-            <td class="status-in-progress">In progress</td>
-            <td class="actions">
-              <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=REQ-002" title="Edit"><i class="fa-solid fa-pen"></i></a>
-              <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=REQ-002" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>REQ-003</td><td>305</td><td>Broken Window</td><td>10/25/2026</td>
-            <td class="status-completed">Completed</td>
-            <td class="actions">
-              <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=REQ-003" title="Edit"><i class="fa-solid fa-pen"></i></a>
-              <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=REQ-003" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>REQ-004</td><td>207</td><td>Dishwasher not draining</td><td>10/24/2026</td>
-            <td class="status-in-progress">In progress</td>
-            <td class="actions">
-              <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=REQ-004" title="Edit"><i class="fa-solid fa-pen"></i></a>
-              <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=REQ-004" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>REQ-005</td><td>102</td><td>Electrical Outlet not working</td><td>10/22/2026</td>
-            <td class="status-completed">Completed</td>
-            <td class="actions">
-              <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=REQ-005" title="Edit"><i class="fa-solid fa-pen"></i></a>
-              <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=REQ-005" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
+            <?php foreach ($requests as $request) { ?>
+                <tr>
+                    <td><?php echo $request['request_id']; ?></td>
+                    <td><?php echo htmlspecialchars($request['unit'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($request['issue'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($request['status'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($request['submitdate'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td class="actions">
+                        <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=<?php echo $request['request_id']; ?>" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                        <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=<?php echo $request['request_id']; ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                        <a class="btn btn-outline-primary btn-sm"
+                           href="request-details.php?request_id=<?php echo $request['request_id']; ?>">
+                            View
+                        </a>
+                    </td>
+                </tr>
+            <?php } ?>
         </tbody>
-      </table>
+    </table>
     </main>
   </div>
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>
