@@ -30,7 +30,7 @@ $showSiteHeader = $showSiteHeader ?? true;
 <body>
 <?php if ($showSiteHeader): ?>
   <header class="site-header">
-    <div class="brand"><i class="fa-solid fa-house-chimney"></i> Cowboy Property Management</div>
+    <div class="brand" href="<?= BASE_URL ?>/"><i class="fa-solid fa-house-chimney"></i> Cowboy Property Management</div>
     <a href="#" class="user<?= !empty($userUnderlined) ? ' underlined' : '' ?>">Admin</a>
   </header>
 <?php endif; ?>

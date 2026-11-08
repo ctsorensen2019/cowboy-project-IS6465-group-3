@@ -1,0 +1,6 @@
+AI Usage:
+
+1. Model used: Claude Opus 5.5
+Prompt: For now, don't fix the pages. Just convert them as is to php pages that fit this file/folder organization in the screenshot. This is the for the midterm submission, not the final submission. We want the admin view of the pages, we can fix permissions later. Remember, those were screenshots of the wireframes I gave you, not the actual pages. I included the screenshots of the wireframes.
+How modified/rejected/reviewed: Every page had to be reviewed and updated. Everything was hardcoded, and so some pages needed to be fixed to do a for loop for table generation, etc. The main benefit of the output was the CSS. As I requested, it did not create any resident pages so I had to update that. It also did not have the "includes" folder when I had prompted it.
+Reason for AI usage: To save time on design.
