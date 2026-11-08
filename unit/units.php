@@ -2,6 +2,26 @@
 $pageTitle = 'Unit Management';
 $activePage = 'units';
 require_once __DIR__ . '/../includes/header.php';
+$units = [
+    [
+        'unit' => '101',
+        'property' => 'Oak St.',
+        'status' => 'Occupied',
+        'resident' => 'J. Preston'
+    ],
+    [
+        'unit' => '102',
+        'property' => 'Oak St.',
+        'status' => 'Vacant',
+        'resident' => ''
+    ],
+    [
+        'unit' => '204',
+        'property' => 'Pine Ave.',
+        'status' => 'Occupied',
+        'resident' => 'C. Bradshaw'
+    ]
+];
 ?>
   <div class="app">
 <?php require_once __DIR__ . '/../includes/nav.php'; ?>
@@ -16,29 +36,32 @@ require_once __DIR__ . '/../includes/header.php';
 
       <div class="table-box">
         <table class="simple-table">
-          <thead><tr><th>Unit</th><th>Property</th><th>Status</th><th>Resident</th><th>Actions</th></tr></thead>
+          <thead>
+            <tr>
+                <th>Unit</th>
+                <th>Property</th>
+                <th>Status</th>
+                <th>Resident</th>
+                <th>Actions</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr>
-              <td>101</td><td>Oak St.</td><td>Occupied</td><td>J. Preston</td>
-              <td class="actions">
-                <a href="<?= BASE_URL ?>/unit/edit-unit.php?id=101" title="Edit"><i class="fa-solid fa-pen"></i></a>
-                <a href="<?= BASE_URL ?>/unit/delete-unit.php?id=101" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>102</td><td>Oak St.</td><td>Vacant</td><td>-</td>
-              <td class="actions">
-                <a href="<?= BASE_URL ?>/unit/edit-unit.php?id=102" title="Edit"><i class="fa-solid fa-pen"></i></a>
-                <a href="<?= BASE_URL ?>/unit/delete-unit.php?id=102" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>204</td><td>Pine Ave.</td><td>Occupied</td><td>C. Bradshaw</td>
-              <td class="actions">
-                <a href="<?= BASE_URL ?>/unit/edit-unit.php?id=204" title="Edit"><i class="fa-solid fa-pen"></i></a>
-                <a href="<?= BASE_URL ?>/unit/delete-unit.php?id=204" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-              </td>
-            </tr>
+              <?php foreach ($units as $unit) { ?>
+                  <tr>
+                      <td><?php echo htmlspecialchars($unit['unit'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($unit['property'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($unit['status'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($unit['resident'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td class="actions">
+                          <a href="<?= BASE_URL ?>/unit/edit-unit.php?id=<?php echo rawurlencode($unit['unit']); ?>" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                          <a href="<?= BASE_URL ?>/maintenance/delete-unit.php?id=<?php echo $unit['unit']; ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                          <a class="btn btn-outline-primary btn-sm"
+                            href="unit-details.php?unit=<?php echo $unit['unit']; ?>">
+                              View
+                          </a>
+                      </td>
+                  </tr>
+              <?php } ?>
           </tbody>
         </table>
       </div>

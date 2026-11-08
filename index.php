@@ -9,9 +9,9 @@ require_once __DIR__ . '/includes/header.php';
 
     <main class="content">
       <section class="stats">
-        <div class="stat-card"><i class="fa-solid fa-building"></i><span class="label">Total Units</span><span class="value">24</span></div>
-        <div class="stat-card"><i class="fa-solid fa-people-group"></i><span class="label">Occupied</span><span class="value">18</span></div>
-        <div class="stat-card"><i class="fa-solid fa-house"></i><span class="label">Vacant</span><span class="value">6</span></div>
+        <div class="stat-card"><i class="fa-solid fa-building"></i><span class="label">Total Units</span><span class="value">3</span></div>
+        <div class="stat-card"><i class="fa-solid fa-people-group"></i><span class="label">Occupied</span><span class="value">2</span></div>
+        <div class="stat-card"><i class="fa-solid fa-house"></i><span class="label">Vacant</span><span class="value">1</span></div>
         <div class="stat-card"><i class="fa-solid fa-wrench"></i><span class="label">Open Requests</span><span class="value">5</span></div>
       </section>
 
