@@ -1,0 +1,17 @@
+{
+  "name": "Cowboy Property Management (PHP 8.3 + SQLite)",
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "features": {
+    "ghcr.io/devcontainers/features/sqlite:1": {}
+  },
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": { "label": "PHP dev server", "onAutoForward": "openBrowser" }
+  },
+  "postAttachCommand": "echo 'Start the site with: php -S 0.0.0.0:8000   then open the forwarded port and go to /login.php'",
+  "customizations": {
+    "vscode": {
+      "extensions": ["bmewburn.vscode-intelephense-client"]
+    }
+  }
+}

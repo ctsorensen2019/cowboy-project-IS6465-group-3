@@ -67,11 +67,15 @@ $requests = [
           <input type="text" placeholder="Search by unit, issue, or request ID" aria-label="Search requests">
         </div>
         <label for="status_filter">Status</label>
-        <input type="text" id="status_filter" class="status-filter">
+        <select id="status_filter" class="status-filter" aria-label="Filter by status">
+          <option value="">All</option>
+          <option value="Pending">Pending</option>
+          <option value="In progress">In progress</option>
+          <option value="Completed">Completed</option>
+        </select>
       </div>
 
       <table class="grid-table">
-        <h1>Maintenance requests</h1>
         <thead>
             <tr>
                 <th>Request</th>
@@ -91,10 +95,10 @@ $requests = [
                     <td><?php echo htmlspecialchars($request['status'], ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?php echo htmlspecialchars($request['submitdate'], ENT_QUOTES, 'UTF-8'); ?></td>
                     <td class="actions">
-                        <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=<?php echo $request['request_id']; ?>" title="Edit"><i class="fa-solid fa-pen"></i></a>
-                        <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?id=<?php echo $request['request_id']; ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                        <a href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?request_id=<?php echo rawurlencode($request['request_id']); ?>" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                        <a href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?request_id=<?php echo rawurlencode($request['request_id']); ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
                         <a class="btn btn-outline-primary btn-sm"
-                           href="request-details.php?request_id=<?php echo $request['request_id']; ?>">
+                           href="request-details.php?request_id=<?php echo rawurlencode($request['request_id']); ?>">
                             View
                         </a>
                     </td>

@@ -20,9 +20,37 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  line-height: normal;
 }
 
 a { color: inherit; text-decoration: none; }
+
+/* ---------- Bootstrap reboot overrides ----------
+   Bootstrap 5.3 is loaded in includes/header.php (class pattern). The design below
+   was built on browser defaults, so pin back the reboot rules it depends on. */
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: normal; margin: 0; }
+p, dl, dd, ul, ol, hr { margin: 0; }
+ul, ol { padding-left: 0; }
+label { display: inline; }
+th { text-align: left; }
+hr { opacity: 1; border: 0; }
+input, select, textarea, button { line-height: normal; }
+.btn {
+  border-radius: 0;
+  line-height: normal;
+  transition: none;
+  --bs-btn-hover-bg: inherit;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:focus-visible {
+  background: var(--purple); color: var(--white); border-color: var(--purple); box-shadow: none;
+}
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary:focus-visible {
+  background: var(--purple-light); color: var(--purple); border-color: var(--purple); box-shadow: none;
+}
+.btn-danger, .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger:focus-visible {
+  background: #b42318; color: var(--white); border-color: #b42318; box-shadow: none;
+}
+.badge { font-size: inherit; line-height: normal; border-radius: 0; }
 
 /* ---------- Header ---------- */
 .site-header {
@@ -117,6 +145,7 @@ a { color: inherit; text-decoration: none; }
 }
 .btn-primary { background: var(--purple); color: var(--white); }
 .btn-secondary { background: var(--purple-light); color: var(--purple); }
+.btn-danger    { background: #b42318; border-color: #b42318; color: var(--white); }
 .btn-block { display: block; width: 100%; }
 
 /* ---------- Dashboard ---------- */
@@ -231,6 +260,8 @@ td.status-completed { background: var(--completed) !important; }
   padding: 10px;
   border: 2px solid var(--border);
   font-family: inherit;
+  font-size: 1.1rem;
+  background: var(--white);
 }
 
 /* ---------- Forms ---------- */
@@ -253,6 +284,7 @@ td.status-completed { background: var(--completed) !important; }
   margin-bottom: 8px;
 }
 .field input,
+.field select,
 .field textarea {
   width: 100%;
   padding: 10px;
@@ -263,6 +295,8 @@ td.status-completed { background: var(--completed) !important; }
 }
 .field textarea { height: 110px; background: var(--bg); resize: vertical; }
 .field input[readonly] { background: var(--purple-light); }
+.form-card > p { font-size: 1.2rem; margin-bottom: 20px; }
+.form-card .detail-list { margin-bottom: 24px; }
 .form-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;

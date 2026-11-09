@@ -49,7 +49,7 @@ $requests = [
     ]
 ];
 
-$requestId = isset($_GET['id']) && is_string($_GET['id']) ? trim($_GET['id']) : '';
+$requestId = isset($_GET['request_id']) && is_string($_GET['request_id']) ? trim($_GET['request_id']) : '';
 $request = null;
 foreach ($requests as $requestRecord) {
     if ($requestRecord['request_id'] === $requestId) {
@@ -73,69 +73,33 @@ require_once __DIR__ . '/../includes/header.php';
 
     <main class="content">
       <div class="page-head">
-        <h1 class="page-title"><a href="<?= BASE_URL ?>/maintenance/maintenance.php" class="back" aria-label="Back to maintenance requests"><i class="fa-solid fa-arrow-left"></i></a> Add / Edit Maintenance Request</h1>
+        <h1 class="page-title"><a href="<?= BASE_URL ?>/maintenance/maintenance.php" class="back" aria-label="Back to maintenance requests"><i class="fa-solid fa-arrow-left"></i></a> Edit Request <?php echo htmlspecialchars($request['request_id'], ENT_QUOTES, 'UTF-8'); ?></h1>
       </div>
 
       <form class="form-card" action="<?= BASE_URL ?>/maintenance/maintenance.php" method="post">
         <div class="form-grid">
-          <div class="field">
-            <input type="hidden" name="request_id"
-               value="<?php echo htmlspecialchars($request['request_id'], ENT_QUOTES, 'UTF-8'); ?>">
-          </div>
+          <input type="hidden" name="request_id" value="<?php echo htmlspecialchars($request['request_id'], ENT_QUOTES, 'UTF-8'); ?>">
           <div class="field">
             <label for="unit">Unit *</label>
-            <input
-                type="integer"
-                id="unit"
-                name="unit"
-                class="form-control"
-                value="<?php echo htmlspecialchars($request['unit'], ENT_QUOTES, 'UTF-8'); ?>"
-                required
-            >
+            <input type="text" id="unit" name="unit" value="<?php echo htmlspecialchars($request['unit'], ENT_QUOTES, 'UTF-8'); ?>" required>
           </div>
           <div class="field">
-            <label for="issue">Issue / Category*</label>
-            <textarea
-                id="issue"
-                name="issue"
-                class="form-control"
-                rows="4"
-                maxlength="30"
-                required
-            ><?php echo htmlspecialchars($request['issue'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+            <label for="issue">Issue / Category *</label>
+            <input type="text" id="issue" name="issue" maxlength="30" value="<?php echo htmlspecialchars($request['issue'], ENT_QUOTES, 'UTF-8'); ?>" required>
           </div>
-          <fieldset class="mb-4">
-            <legend class="fs-6 fw-bold">Status</legend>
-
-            <?php
-            $statusOptions = ['Pending', 'In Progress', 'Completed'];
-
-            foreach ($statusOptions as $statusOption) {
-                $checked = strcasecmp($request['status'], $statusOption) === 0 ? 'checked' : '';
-                $id = strtolower(str_replace(' ', '-', $statusOption));
-            ?>
-                <div class="form-check">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        id="status-<?php echo $id; ?>"
-                        name="status"
-                        value="<?php echo htmlspecialchars($statusOption, ENT_QUOTES, 'UTF-8'); ?>"
-                        <?php echo $checked; ?>
-                        required
-                    >
-                    <label class="form-check-label" for="status-<?php echo $id; ?>">
-                        <?php echo htmlspecialchars($statusOption, ENT_QUOTES, 'UTF-8'); ?>
-                    </label>
-                </div>
-            <?php } ?>
-        </fieldset>
+          <div class="field">
+            <label for="status">Status *</label>
+            <select id="status" name="status" required>
+              <?php foreach (['Pending', 'In progress', 'Completed'] as $statusOption) { ?>
+                <option value="<?php echo $statusOption; ?>"<?php echo strcasecmp($request['status'], $statusOption) === 0 ? ' selected' : ''; ?>><?php echo $statusOption; ?></option>
+              <?php } ?>
+            </select>
+          </div>
           <div class="field full">
             <label for="description">Description *</label>
             <textarea
                 id="description"
                 name="description"
-                class="form-control"
                 rows="4"
                 maxlength="120"
                 required
@@ -147,7 +111,6 @@ require_once __DIR__ . '/../includes/header.php';
                 type="date"
                 id="date_submitted"
                 name="date_submitted"
-                class="form-control"
                 value="<?php echo htmlspecialchars($dateSubmittedValue, ENT_QUOTES, 'UTF-8'); ?>"
                 required
             >

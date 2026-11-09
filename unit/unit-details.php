@@ -32,7 +32,7 @@ $units = [
     ]
 ];
 
-$unitId = isset($_GET['unit']) && is_string($_GET['unit']) ? trim($_GET['unit']) : '';
+$unitId = isset($_GET['unit_id']) && is_string($_GET['unit_id']) ? trim($_GET['unit_id']) : '';
 $unit = null;
 foreach ($units as $unitRecord) {
     if ($unitRecord['unit'] === $unitId) {
@@ -80,7 +80,8 @@ require_once __DIR__ . '/../includes/header.php';
     </dl>
 
     <div class="detail-actions">
-      <a class="btn btn-primary" href="<?= BASE_URL ?>/unit/edit-unit.php?id=<?php echo rawurlencode($unit['unit']); ?>">Edit</a>
+      <a class="btn btn-primary" href="<?= BASE_URL ?>/unit/edit-unit.php?unit_id=<?php echo rawurlencode($unit['unit']); ?>">Edit</a>
+      <a class="btn btn-danger" href="<?= BASE_URL ?>/unit/delete-unit.php?unit_id=<?php echo rawurlencode($unit['unit']); ?>">Delete</a>
       <a class="btn btn-secondary" href="<?= BASE_URL ?>/unit/units.php">Back to units</a>
     </div>
   </main>

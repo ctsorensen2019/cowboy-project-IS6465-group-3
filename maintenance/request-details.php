@@ -98,7 +98,8 @@ require_once __DIR__ . '/../includes/header.php';
     </dl>
 
     <div class="detail-actions">
-      <a class="btn btn-primary" href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?id=<?php echo rawurlencode($request['request_id']); ?>">Edit</a>
+      <a class="btn btn-primary" href="<?= BASE_URL ?>/maintenance/edit-maintenance.php?request_id=<?php echo rawurlencode($request['request_id']); ?>">Edit</a>
+      <a class="btn btn-danger" href="<?= BASE_URL ?>/maintenance/delete-maintenance.php?request_id=<?php echo rawurlencode($request['request_id']); ?>">Delete</a>
       <a class="btn btn-secondary" href="<?= BASE_URL ?>/maintenance/maintenance.php">Back to maintenance requests</a>
     </div>
   </main>

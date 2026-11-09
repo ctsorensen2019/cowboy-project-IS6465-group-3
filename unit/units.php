@@ -53,10 +53,10 @@ $units = [
                       <td><?php echo htmlspecialchars($unit['status'], ENT_QUOTES, 'UTF-8'); ?></td>
                       <td><?php echo htmlspecialchars($unit['resident'], ENT_QUOTES, 'UTF-8'); ?></td>
                       <td class="actions">
-                          <a href="<?= BASE_URL ?>/unit/edit-unit.php?id=<?php echo rawurlencode($unit['unit']); ?>" title="Edit"><i class="fa-solid fa-pen"></i></a>
-                          <a href="<?= BASE_URL ?>/maintenance/delete-unit.php?id=<?php echo $unit['unit']; ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                          <a href="<?= BASE_URL ?>/unit/edit-unit.php?unit_id=<?php echo rawurlencode($unit['unit']); ?>" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                          <a href="<?= BASE_URL ?>/unit/delete-unit.php?unit_id=<?php echo rawurlencode($unit['unit']); ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
                           <a class="btn btn-outline-primary btn-sm"
-                            href="unit-details.php?unit=<?php echo $unit['unit']; ?>">
+                            href="unit-details.php?unit_id=<?php echo rawurlencode($unit['unit']); ?>">
                               View
                           </a>
                       </td>
